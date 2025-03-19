@@ -10,6 +10,7 @@ interface PhotoGridProps {
   loading: boolean;
   error: ErrorState | null;
   onPhotoPress?: (photo: Photo) => void;
+  onPhotoClick?: (photo: Photo) => void;  // Add this new prop to support web version
 }
 
 // Calculate the number of columns based on screen width
@@ -18,7 +19,16 @@ const numColumns = 3;
 /**
  * Grid layout for displaying photos
  */
-const PhotoGrid = ({ photos, loading, error, onPhotoPress }: PhotoGridProps) => {
+const PhotoGrid = ({ photos, loading, error, onPhotoPress, onPhotoClick }: PhotoGridProps) => {
+  // Handle both prop versions (for compatibility between web and mobile)
+  const handlePhotoAction = (photo: Photo) => {
+    if (onPhotoClick) {
+      onPhotoClick(photo);
+    } else if (onPhotoPress) {
+      onPhotoPress(photo);
+    }
+  };
+
   // Display loading state
   if (loading) {
     return <Loading />;
@@ -64,7 +74,7 @@ const PhotoGrid = ({ photos, loading, error, onPhotoPress }: PhotoGridProps) => 
         <View style={{ width: itemWidth }}>
           <PhotoThumbnail 
             photo={item} 
-            onPress={onPhotoPress} 
+            onPress={() => handlePhotoAction(item)} 
           />
         </View>
       )}
