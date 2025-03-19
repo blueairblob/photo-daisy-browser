@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
 interface HeaderProps {
   title?: string;
@@ -14,15 +15,36 @@ const Header = ({
   subtitle = "Browse your photo collection" 
 }: HeaderProps) => {
   return (
-    <div className="sticky top-0 z-10 backdrop-blur-md bg-background/80 border-b px-4 py-4">
-      <div className="flex flex-col">
-        <h1 className="text-xl font-medium tracking-tight">{title}</h1>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
         {subtitle && (
-          <p className="text-sm text-muted-foreground">{subtitle}</p>
+          <Text style={styles.subtitle}>{subtitle}</Text>
         )}
-      </div>
-    </div>
+      </View>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  safeArea: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e5e5',
+  },
+  container: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 2,
+  }
+});
 
 export default Header;
