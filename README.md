@@ -18,8 +18,7 @@ Before you begin, ensure you have the following installed on your development ma
 - [Node.js](https://nodejs.org/) (v14.x or later)
 - [npm](https://www.npmjs.com/) (v6.x or later) or [Yarn](https://yarnpkg.com/) (v1.22.x or later)
 - [Expo CLI](https://docs.expo.dev/workflow/expo-cli/) (`npm install -g expo-cli`)
-- [Xcode](https://developer.apple.com/xcode/) (for iOS development, Mac only)
-- [Android Studio](https://developer.android.com/studio) (for Android development)
+- [Expo Go](https://expo.dev/client) app installed on your iOS or Android device for testing
 
 ## Installation
 
@@ -59,33 +58,21 @@ const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
 Start the development server with:
 
 ```bash
-npm start
-# or
-yarn start
-# or
-expo start
+npx expo start
 ```
 
-This will open the Expo developer tools in your browser where you can choose to run the app on:
+This will display a QR code in your terminal that you can scan with the Expo Go app on your iOS or Android device.
 
-- iOS simulator (Mac only): Press `i`
-- Android emulator: Press `a`
-- Web browser: Press `w`
-- Physical device: Scan the QR code with the Expo Go app ([iOS](https://apps.apple.com/app/expo-go/id982107779) / [Android](https://play.google.com/store/apps/details?id=host.exp.exponent))
+Alternatively, you can run the app in a simulator/emulator:
 
-### Building for Production
+- iOS simulator (Mac only): Press `i` in the terminal
+- Android emulator: Press `a` in the terminal
 
-#### For iOS (requires a Mac):
+### Running on Physical Devices
 
-```bash
-expo build:ios
-```
-
-#### For Android:
-
-```bash
-expo build:android
-```
+1. Make sure your device is on the same WiFi network as your development machine
+2. Install the Expo Go app on your device
+3. Scan the QR code with your device's camera (iOS) or the Expo Go app (Android)
 
 ## Project Structure
 
@@ -103,23 +90,12 @@ photo-browser/
 │   │   └── PhotoThumbnail.tsx
 │   ├── hooks/           # Custom React hooks
 │   │   └── usePhotos.ts # Hook for fetching photos
-│   ├── lib/             # Shared utilities and types
-│   │   ├── supabase.ts  # Supabase client configuration
-│   │   └── types.ts     # TypeScript type definitions
-│   └── pages/           # Screen components
-│       └── Index.tsx    # Main photo grid screen
-└── tsconfig.json        # TypeScript configuration
+│   └── lib/             # Shared utilities and types
+│       ├── supabase.ts  # Supabase client configuration
+│       └── types.ts     # TypeScript type definitions
 ```
 
-## Technologies Used
-
-- [React Native](https://reactnative.dev/) - Mobile application framework
-- [Expo](https://expo.dev/) - React Native toolchain
-- [TypeScript](https://www.typescriptlang.org/) - Static typing
-- [Supabase](https://supabase.io/) - Backend-as-a-Service for storage
-- [React Native AsyncStorage](https://react-native-async-storage.github.io/async-storage/) - Data storage solution
-
-## Common Issues
+## Troubleshooting
 
 ### Network Errors
 
@@ -138,20 +114,17 @@ If you encounter build errors:
 3. Clear the Expo cache: `expo r -c`
 4. Make sure you have the latest Expo SDK installed
 
-## Contributing
+## Expo Specific Commands
 
-1. Fork the project
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+- Start with clear cache: `npx expo start -c`
+- Build for Android: `eas build -p android`
+- Build for iOS: `eas build -p ios`
+- Update dependencies: `npx expo install`
 
-## License
+## Dependencies
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- [Expo Documentation](https://docs.expo.dev/)
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [Supabase Documentation](https://supabase.io/docs)
+- React Native
+- Expo
+- Supabase JS Client
+- React Native AsyncStorage
+- Expo Image
