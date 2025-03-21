@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 
@@ -6,9 +5,6 @@ interface LoadingProps {
   message?: string;
 }
 
-/**
- * Loading spinner component with configurable message
- */
 const Loading = ({ message = 'Loading photos...' }: LoadingProps) => {
   return (
     <View style={styles.container}>

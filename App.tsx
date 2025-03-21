@@ -1,9 +1,7 @@
-
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
-import Header from './src/components/Header';
+import { SafeAreaView, StyleSheet, View, Text, StatusBar } from 'react-native';
 import PhotoGrid from './src/components/PhotoGrid';
+import Header from './src/components/Header';
 import { usePhotos } from './src/hooks/usePhotos';
 
 export default function App() {
@@ -11,7 +9,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="dark" />
+      <StatusBar barStyle="dark-content" />
       <Header 
         title="Photo Browser" 
         subtitle={`${photos.length} photos in your collection`} 
@@ -35,5 +33,6 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    padding: 8,
   }
 });

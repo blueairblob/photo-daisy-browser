@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Image } from 'expo-image';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Photo } from '../lib/types';
 
 interface PhotoThumbnailProps {
@@ -9,9 +7,6 @@ interface PhotoThumbnailProps {
   onPress?: (photo: Photo) => void;
 }
 
-/**
- * Individual photo thumbnail component
- */
 const PhotoThumbnail = ({ photo, onPress }: PhotoThumbnailProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -38,8 +33,7 @@ const PhotoThumbnail = ({ photo, onPress }: PhotoThumbnailProps) => {
         <Image
           source={{ uri: photo.url }}
           style={styles.image}
-          contentFit="cover"
-          transition={300}
+          resizeMode="cover"
           onLoad={() => setIsLoaded(true)}
           onError={() => {
             setHasError(true);

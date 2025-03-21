@@ -1,5 +1,6 @@
-
 {
+  "name": "PhotoBrowser",
+  "displayName": "Photo Browser",
   "expo": {
     "name": "Photo Browser",
     "slug": "photo-browser",
