@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, View, Text } from 'react-native';
+import { FlatList, StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import { Photo, ErrorState } from '../lib/types';
 import PhotoThumbnail from './PhotoThumbnail';
 import Loading from './Loading';
@@ -13,18 +13,18 @@ interface PhotoGridProps {
 
 const PhotoGrid = ({ photos, loading, error, onPhotoPress }: PhotoGridProps) => {
   if (loading) {
-    return <Loading />;
+    return  <ActivityIndicator size="large" color="#0000ff" />;
   }
 
   if (error) {
     return (
       <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Error: {error.message}</Text>
+        <Text style={{ color: 'red', textAlign: 'center' }}>Error: {error.message}</Text>
       </View>
     );
   }
 
-  if (photos.length === 0) {
+  if (!loading && !error && photos.length === 0) {
     return (
       <View style={styles.emptyContainer}>
         <Text style={styles.emptyText}>No photos found</Text>

@@ -7,6 +7,11 @@ import { usePhotos } from './src/hooks/usePhotos';
 export default function App() {
   const { photos, loading, error } = usePhotos();
 
+  console.log('Photos:', photos);
+  console.log('Loading:', loading);
+  console.log('Error:', error);
+
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />

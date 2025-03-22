@@ -1,8 +1,7 @@
 {
-  "name": "PhotoBrowser",
-  "displayName": "Photo Browser",
   "expo": {
-    "name": "Photo Browser",
+    "name": "PhotoBrowser",
+    "displayName": "Photo Browser",
     "slug": "photo-browser",
     "version": "1.0.0",
     "orientation": "portrait",
